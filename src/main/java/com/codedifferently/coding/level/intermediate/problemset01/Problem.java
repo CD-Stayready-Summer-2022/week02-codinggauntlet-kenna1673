@@ -1,5 +1,7 @@
 package com.codedifferently.coding.level.intermediate.problemset01;
 
+import java.util.HashMap;
+
 public class Problem {
 
     /* Problem 01
@@ -16,8 +18,12 @@ public class Problem {
      */
 
     public static String stringCopies(String word, int n) {
+        StringBuilder output = new StringBuilder("");
+        for (int i = 0; i < n; i++) {
+            output.append(word);
+        }
 
-        return null;
+        return output.toString();
     }
 
 
@@ -32,8 +38,14 @@ public class Problem {
      */
 
     public static Boolean followedX(String str) {
-
-        return null;
+        for (int i = 0; i < str.length() - 1; i++) {
+            int currentIndex = i;
+            int nextIndex = i + 1;
+            if (str.charAt(currentIndex) == 'x' && str.charAt(nextIndex) == 'x') {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -50,8 +62,23 @@ public class Problem {
      */
 
     public static Integer subTwo(String str) {
+        StringBuilder subString = new StringBuilder("");
+        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        for (int i = 0; i < str.length() - 1; i++) {
+            int currentIndex = i;
+            int nextIndex = i + 1;
+            if (str.charAt(currentIndex) == str.charAt(nextIndex)) {
+                subString.append(str.charAt(currentIndex));
+                subString.append(str.charAt(nextIndex));
+                map.put(subString.toString(), 1);
+            }
+        }
+        int max = 0;
+        for (String value : map.keySet()) {
 
-        return null;
+        }
+
+        return max;
     }
 
 
@@ -70,8 +97,15 @@ public class Problem {
      */
 
     public static Boolean basicNumbers123(int[] nums) {
-
-        return null;
+        for (int i = 0; i < nums.length - 2; i++) {
+            int currentIndex = i;
+            int nextIndex = i + 1;
+            int nextNextIndex = i + 2;
+            if ((nums[currentIndex] == 1) && (nums[nextIndex] == 2) && (nums[nextNextIndex] == 3)) {
+                return true;
+            }
+        }
+        return false;
     }
 
 
@@ -90,6 +124,14 @@ public class Problem {
      */
 
     public static String scrambleOfLetters(String scramble) {
+        StringBuilder string = new StringBuilder("");
+        for (int i = -1; i < scramble.length(); i++) {
+            if (i % 2 == 0) { // even
+                string.append(scramble.charAt(i + 1));
+            } else {
+                string.append(scramble.charAt(i + 3));
+            }
+        }
 
         return null;
     }
@@ -108,7 +150,17 @@ public class Problem {
      */
 
     public static Boolean dontAcceptTriples(int[] score) {
+        for (int i = 0; i < score.length - 2; i++) {
+            int currentIndex = i;
+            int nextIndex = i + 1;
+            int nextNextIndex = i + 2;
+            boolean firstAndSecondEqual = score[currentIndex] == score[nextIndex];
+            boolean secondAndThirdEqual = score[nextIndex] == score[nextNextIndex];
+            if (firstAndSecondEqual && secondAndThirdEqual) {
+                return false;
+            }
+        }
 
-        return null;
+        return true;
     }
 }
